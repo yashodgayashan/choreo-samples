@@ -1,0 +1,15 @@
+steps:
+  - name: Prism Build
+    template: choreo/prism-build@v1
+  - name: Static Code Analysis
+    template: sonar-qube
+templates:
+  - name: sonar-qube
+    inlineScript: |
+      #!/bin/bash
+      echo "Starting SonarQube scan..."
+    env:
+      - name: SONAR_PROJECT_KEY
+        value: "hello"
+
+  
