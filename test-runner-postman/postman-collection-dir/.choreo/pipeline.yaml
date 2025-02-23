@@ -1,0 +1,19 @@
+steps:
+  - name: Dockerfile Scan
+    template: choreo/dockerfile-scan@v1
+  - name: Test Runner Build
+    template: choreo/test-runner-build@v1
+  - name: Static Code Analysis
+    template: sonar-qube
+  - name: Vulnerability Scan
+    template: choreo/trivy-scan@v1
+templates:
+  - name: sonar-qube
+    inlineScript: |
+      #!/bin/bash
+      echo "Starting SonarQube scan..."
+    env:
+      - name: SONAR_PROJECT_KEY
+        value: "hello"
+
+  
