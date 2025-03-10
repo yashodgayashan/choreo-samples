@@ -1,0 +1,14 @@
+steps:
+  - name: Build Preparation
+    template: choreo/build-preparation@v1
+  - name: Vulnerability Scan
+    template: choreo/mi-trivy-scan@v1
+  - name: Integration Project Build
+    template: choreo/integration-project-build@v1
+  - name: Static Code Analysis
+    template: sonar-qube-3
+templates:
+  - name: sonar-qube-3
+    inlineScript: |
+      #!/bin/bash
+      echo "Starting SonarQube scan...222"
